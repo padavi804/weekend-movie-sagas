@@ -10,10 +10,10 @@ const movies = useSelector(store => store.movies);
 const movieDetail = useSelector(store => store.details);
 const movieGenres = useSelector(store => store.genres)
 console.log('movie details:', movieDetail)
-
+console.log('id:',  id)
 
 useEffect(() => {
-    dispatch({type:'SET_DETAILS', payload: movieDetail})
+    dispatch({type:'SET_DETAILS', payload: id})
 }, []);
 
 function handleClick() {
@@ -22,7 +22,7 @@ function handleClick() {
 
 
 return (
-<div data-testid="movieDetails">
+<div data-testid="movieDetails">    
 <h1>{movies.title}</h1>
 {/* <img {movieDetail.poster}></img> */}
 <button onClick={handleClick}  data-testid="toList">Return to Movie List</button>
