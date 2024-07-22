@@ -6,21 +6,25 @@ function Details() {
 const dispatch = useDispatch();
 const history = useHistory();
 const {id} = useParams();
-const movieDetail = useSelector(store => store.movies);
-const movieGenre = useSelector(store => store.genres);
+const movies = useSelector(store => store.movies);
+const movieDetail = useSelector(store => store.details);
+const movieGenres = useSelector(store => store.genres)
 console.log('movie details:', movieDetail)
+
+
+useEffect(() => {
+    dispatch({type:'SET_DETAILS', payload: movieDetail})
+}, []);
 
 function handleClick() {
     history.push('/');
 }
 
-useEffect(() => {
-    dispatch({type:'GET_GENRES', payload:{id}})
-}, []);
 
 return (
 <div data-testid="movieDetails">
-<h1>{movieDetail.title}</h1>
+<h1>{movies.title}</h1>
+{/* <img {movieDetail.poster}></img> */}
 <button onClick={handleClick}  data-testid="toList">Return to Movie List</button>
 </div>
 
