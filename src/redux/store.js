@@ -25,6 +25,7 @@ function* fetchAllMovies() {
 }
 
 function* setDetails(action) {
+  console.log('action payload set details', action.payload)
   try{
     // Get the chosen movie details:
     const detailsResponse = yield axios.get(`/api/genres/${action.payload}`);
